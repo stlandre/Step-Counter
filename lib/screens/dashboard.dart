@@ -5,6 +5,8 @@ import 'package:vector_math/vector_math_64.dart' hide Colors;
 import 'package:motion_sensors/motion_sensors.dart';
 import 'package:steps/main.dart';
 
+import 'analisesteps.dart';
+
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
@@ -38,7 +40,6 @@ class _DashboardState extends State<Dashboard> {
   double _parametroAceleracaoUserzMax = 0.6;
 
   int _passos = 0;
-  int _passosTemp = 0;
 
   int _contador = 1;
 

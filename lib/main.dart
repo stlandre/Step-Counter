@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:steps/screens/dashboard.dart';
-import 'package:vector_math/vector_math_64.dart' hide Colors;
-import 'package:motion_sensors/motion_sensors.dart';
+import 'package:steps/model/steps.dart';
 
 void main() {
   runApp(StepsApp());
@@ -21,11 +18,12 @@ class StepsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      home: Pedometro(),//Dashboard(),
+      home: Dashboard(),//Pedometro(),
     );
   }
 }
 
+/*
 class Pedometro extends StatefulWidget {
   @override
   _PedometroState createState() => _PedometroState();
@@ -296,14 +294,10 @@ class _PedometroState extends State<Pedometro> {
     );
   }
 }
+*/
 
-class Step {
-  final double periodo;
-  final double aceleracaoMax;
 
-  Step(this.periodo, this.aceleracaoMax);
-}
-
+/*
 class AnaliseSteps extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -313,7 +307,7 @@ class AnaliseSteps extends StatefulWidget {
 }
 
 class AnaliseStepsState extends State<AnaliseSteps> {
-  final List<Step> _passos = [];
+  final List<Steps> _passos = [];
 
   Vector3 _accelerometer = Vector3.zero();
   Vector3 _magnetometer = Vector3.zero();
@@ -399,7 +393,7 @@ class AnaliseStepsState extends State<AnaliseSteps> {
         } else {
           if (_aceleracaoUserzMax >= 0.5) {
             //_passos++;
-            final Step passo = Step(_periodo, _aceleracaoUserzMax);
+            final Steps passo = Steps(_periodo, _aceleracaoUserzMax);
             _passos.add(passo);
           }
           _periodo = 0;
@@ -435,7 +429,7 @@ class AnaliseStepsState extends State<AnaliseSteps> {
     //final Step parametroCriado = Step(15.0, 0.6);
     if(_passos.length > 5) {
       int indice = 0;
-      List<Step> pss = [];
+      List<Steps> pss = [];
       double media = 0.0;
       _passos.sort((a, b) => a.aceleracaoMax.compareTo(b.aceleracaoMax));
 
@@ -455,15 +449,15 @@ class AnaliseStepsState extends State<AnaliseSteps> {
 
       media = media / pss.length;
 
-      final Step parametroCriado = Step(media, pss.first.aceleracaoMax);
+      final Steps parametroCriado = Steps(media, pss.first.aceleracaoMax);
       Navigator.pop(context, parametroCriado);
     }
 
   }
-}
+}*/
 
-class ItemStep extends StatelessWidget {
-  final Step _passo;
+/*class ItemStep extends StatelessWidget {
+  final Steps _passo;
 
   ItemStep(this._passo);
 
@@ -478,4 +472,4 @@ class ItemStep extends StatelessWidget {
       ),
     );
   }
-}
+}*/
