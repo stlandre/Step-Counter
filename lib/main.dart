@@ -18,6 +18,14 @@ class StepsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.grey[500],
+        accentColor: Colors.orangeAccent[200],
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.orangeAccent[400],
+          textTheme: ButtonTextTheme.primary,
+        ),
+      ),
       home: Dashboard(),//Pedometro(),
     );
   }

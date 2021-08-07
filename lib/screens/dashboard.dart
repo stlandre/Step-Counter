@@ -241,134 +241,137 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         title: const Text('Steps'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            height: MediaQuery.of(context).size.height/3, //talvez haja uma maneira melhor de fazer isso. Talvez apresente problema ao rotacionar a tela
-            width: MediaQuery.of(context).size.width,
-            child: Center(
-              child: Material(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.all(
-                    Radius.circular(50)
-                ),
-                child: InkWell(
-                  onTap: (){
-                    _passos = 0;
-                  },
-                  child: Container(
-                    child: Center(
-                      child: Text(
-                        '$_passos',
-                        textScaleFactor: 3.0,
-                        style: TextStyle(color: Colors.white),
+      body: Material(
+        //color: Colors.grey[300],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              height: MediaQuery.of(context).size.height/3, //talvez haja uma maneira melhor de fazer isso. Talvez apresente problema ao rotacionar a tela
+              width: MediaQuery.of(context).size.width,
+              child: Center(
+                child: Material(
+                  color: Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(50)
+                  ),
+                  child: InkWell(
+                    onTap: (){
+                      _passos = 0;
+                    },
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          '$_passos',
+                          textScaleFactor: 3.0,
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
+                      height: 100,
+                      width: 100,
                     ),
-                    height: 100,
-                    width: 100,
                   ),
                 ),
               ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            height: 150,
-            width: MediaQuery.of(context).size.width,
-            child: Row (
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Material(
-                      color: Theme.of(context).primaryColor,
-                      child: InkWell(
-                        onTap: (){
-                          final Future future = Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return AnaliseSteps();
-                          }));
-                          future.then((parametroRecebido){
-                            setState(() {
-                              if(parametroRecebido.periodo <= 50.0) {
-                                _parametroPeriodo = parametroRecebido.periodo;
-                              }
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              height: 150,
+              width: MediaQuery.of(context).size.width,
+              child: Row (
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Material(
+                        color: Theme.of(context).accentColor,
+                        child: InkWell(
+                          onTap: (){
+                            final Future future = Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return AnaliseSteps();
+                            }));
+                            future.then((parametroRecebido){
+                              setState(() {
+                                if(parametroRecebido.periodo <= 50.0) {
+                                  _parametroPeriodo = parametroRecebido.periodo;
+                                }
 
-                              if(parametroRecebido.aceleracaoMax <= 1.0) {
-                                _parametroAceleracaoUserzMax = parametroRecebido.aceleracaoMax * 0.6;
-                              }
+                                if(parametroRecebido.aceleracaoMax <= 1.0) {
+                                  _parametroAceleracaoUserzMax = parametroRecebido.aceleracaoMax * 0.6;
+                                }
+                              });
                             });
-                          });
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(8.0),
-                          height: 100,
-                          width: 150,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Icon(
-                                Icons.show_chart,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                              Text(
-                                'Analisar passo',
-                                style: TextStyle(
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(8.0),
+                            height: 100,
+                            width: 150,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.show_chart,
                                   color: Colors.white,
-                                  fontSize: 16,
+                                  size: 24,
                                 ),
-                              )
-                            ],
+                                Text(
+                                  'Analisar passo',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                ),
-                Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Material(
-                      color: Theme.of(context).primaryColor,
-                      child: InkWell(
-                        onTap: (){
+                      )
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Material(
+                        color: Theme.of(context).accentColor,
+                        child: InkWell(
+                          onTap: (){
 
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(8.0),
-                          height: 100,
-                          width: 150,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Icon(
-                                Icons.settings,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                              Text(
-                                'Configurações',
-                                style: TextStyle(
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(8.0),
+                            height: 100,
+                            width: 150,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.settings,
                                   color: Colors.white,
-                                  fontSize: 16,
+                                  size: 24,
                                 ),
-                              )
-                            ],
+                                Text(
+                                  'Configurações',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                ),
-              ],
+                      )
+                  ),
+                ],
+              ),
             ),
-          ),
 
 
-        ],
+          ],
+        ),
       ),
     );
   }
