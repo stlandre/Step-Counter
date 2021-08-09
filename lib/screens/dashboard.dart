@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:steps/screens/settings.dart';
 import 'package:vector_math/vector_math_64.dart' hide Colors;
 import 'package:motion_sensors/motion_sensors.dart';
 import 'package:steps/main.dart';
@@ -9,10 +10,10 @@ import 'analisesteps.dart';
 
 class Dashboard extends StatefulWidget {
   @override
-  _DashboardState createState() => _DashboardState();
+  DashboardState createState() => DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class DashboardState extends State<Dashboard> {
   //dados dos sensores
   Vector3 _accelerometer = Vector3.zero();
   Vector3 _magnetometer = Vector3.zero();
@@ -291,7 +292,8 @@ class _DashboardState extends State<Dashboard> {
                         child: InkWell(
                           onTap: (){
                             final Future future = Navigator.push(context, MaterialPageRoute(builder: (context){
-                              return AnaliseSteps();
+                              //AnaliseSteps a = new AnaliseSteps();
+                              return AnaliseSteps();//a;
                             }));
                             future.then((parametroRecebido){
                               setState(() {
@@ -337,7 +339,21 @@ class _DashboardState extends State<Dashboard> {
                         color: Theme.of(context).accentColor,
                         child: InkWell(
                           onTap: (){
+                            final Future future = Navigator.push(context, MaterialPageRoute(builder: (context){
+                              //AnaliseSteps a = new AnaliseSteps();
+                              return Settings();//a;
+                            }));
+/*                            future.then((parametroRecebido){
+                              setState(() {
+                                if(parametroRecebido.periodo <= 50.0) {
+                                  _parametroPeriodo = parametroRecebido.periodo;
+                                }
 
+                                if(parametroRecebido.aceleracaoMax <= 1.0) {
+                                  _parametroAceleracaoUserzMax = parametroRecebido.aceleracaoMax * 0.6;
+                                }
+                              });
+                            });*/
                           },
                           child: Container(
                             padding: EdgeInsets.all(8.0),
